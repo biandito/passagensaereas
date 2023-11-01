@@ -4,7 +4,12 @@ public class Voo {
     public String data;
     public String hora;
 
-    
+    public Voo(Aeronave aero, int nro, String data, String hora) {
+    	this.aero = aero;
+    	this.nro = nro;
+    	this.data = data;
+    	this.hora = hora;
+    }    
     public int getNro() {
         return nro;
     }
