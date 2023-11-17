@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Aviao extends Aeronave {
 	
 	public Passageiro[][] Lugares;
@@ -8,6 +10,20 @@ public class Aviao extends Aeronave {
 		this.Lugares = new Passageiro[fileiras][lugares];
 	}
 	
+	public Aviao() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public void setAero(int nAero, Aviao[] aero) {
+		String aeroModel[] = new String[nAero];
+		 for(int i = 0; i<nAero; i++) {aeroModel[i]=aero[i].modelo;}
+		 String aeroVooModel = (String) JOptionPane.showInputDialog(null, "Qual aeronave?", "Escolher Aeronave", nAero, null, aeroModel, aeroModel[0]);
+		 for(int j = 0; j<nAero; j++) {if(aeroVooModel==aero[j].modelo) {
+			 this.modelo = aero[j].modelo;
+			 this.Lugares= aero[j].Lugares;
+			 }}
+	}
 	//Retornar informações do passageiro naquele lugar
 	public Passageiro getPassageiro(int fileira, int lugar) {
 		return Lugares[fileira][lugar];
@@ -23,5 +39,7 @@ public class Aviao extends Aeronave {
 	public void setPassageiro(int fileira, int lugar, Passageiro passageiro) {
 		this.Lugares[fileira][lugar] = passageiro;
 	}
+	
+	
     
 }

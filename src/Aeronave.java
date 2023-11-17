@@ -5,7 +5,11 @@ public class Aeronave {
     	this.modelo = modelo;
     }
     
-    public String getModelo() {
+    public Aeronave() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getModelo() {
     	return this.modelo;
     }
     
