@@ -8,6 +8,8 @@ public class App {
 		int nVoo = 0;
 		Aviao aero[] = new Aviao[10];
 		int nAero = 0;
+		Calendario calendario = new Calendario();
+		PainelHoras horas = new PainelHoras();
 		
 		
 			
@@ -36,7 +38,7 @@ public class App {
 	    	 //CADASTRO DE AERONAVE
 	    	 case 0:
 	    		 String model = JOptionPane.showInputDialog("Digite o modelo do Aviao");
-	    		 for(int i=0; i< nAero; i++) if(model.equals(aero[i].modelo)) {JOptionPane.showMessageDialog(null, "Modelo existe");}
+	    		 for(int i=0; i< nAero; i++) if(model.equals(aero[i].modelo)) {JOptionPane.showMessageDialog(null, "Modelo já existe");}
 	    		 int lugares[] = new int[2];
 				 try {
 					lugares[0] = Integer.parseInt(JOptionPane.showInputDialog("Digite o numero de fileiras"));
@@ -46,7 +48,8 @@ public class App {
 					return; 
 				} finally {
 					
-	    		 JOptionPane.showMessageDialog(null, aero[nAero].getModelo());
+	    		 aero[nAero] = new Aviao(model,lugares[0],lugares[1]);
+	    		 JOptionPane.showMessageDialog(null, aero[nAero].getModelo()+" Cadastrado");
 	    		 nAero++; }
 	    		 break;
 	    		 
@@ -61,9 +64,10 @@ public class App {
 	    		 Aviao aeroVoo = new Aviao();
 	    		 aeroVoo.setAero(nAero, aero);
 				 try {
-				 String mesVoo = JOptionPane.showInputDialog("Qual mês?");
-	    		 String diaVoo = JOptionPane.showInputDialog("Qual dia?");
-	    		 String horaVoo = JOptionPane.showInputDialog("Qual hora?");
+				 String mesVoo = (String) JOptionPane.showInputDialog(null, "Qual Mês?", "Escolher Mês", 2, null, calendario.mes, calendario.mes[0]);
+		    	 String diaVoo = (String) JOptionPane.showInputDialog(null, "Qual dia?", "Escolha o dia", 2, null, calendario.dia, calendario.dia[0]);;
+		    	 JOptionPane.showConfirmDialog(null, horas.horasP, "Insira o horário", 2);
+		   	     String horaVoo = horas.horas.getSelectedItem()+":"+horas.minutos.getSelectedItem();
 	    		 voos[nVoo] = new Voo(aeroVoo, nVoo, diaVoo+"/"+mesVoo, horaVoo);
 	    		 
 	    		 JOptionPane.showMessageDialog(null, "Número do Voo: "+voos[nVoo].getNro()
@@ -100,7 +104,7 @@ public class App {
 			 for (int i = 0; i < nVoo; i++) {
 				 vooStr[i] = voos[i].aeronave.modelo + ", " + voos[i].data + ", " + voos[i].hora;
 			 }
-			 String escVooStr = (String) JOptionPane.showInputDialog(null, "Escolha um voo", "Escolher Voo", nVoo, null, vooStr, vooStr[0]);
+			 String escVooStr = (String) JOptionPane.showInputDialog(null, "Escolha um voo", "Escolher Voo", 2, null, vooStr, vooStr[0]);
 			 Voo escVoo = new Voo();
 		 
 			 for (int j = 0; j < nVoo; j++) {
@@ -134,7 +138,7 @@ public class App {
 				 }
 		 
 				 String verStr = (String) JOptionPane.showInputDialog(
-						 null, "Escolha um voo", "Escolher Voo", nVoo, null, verVooStr, verVooStr[0]);
+						 null, "Escolha um voo", "Escolher Voo", 2, null, verVooStr, verVooStr[0]);
 		 
 				 Voo verVoo = new Voo();
 				 for (int j = 0; j < nVoo; j++) {
@@ -168,7 +172,7 @@ public class App {
 	    		 
 	    		 String lugVooStr[] = new String[nVoo];
 	    		 for(int i = 0; i<nVoo; i++) {lugVooStr[i]=voos[i].aeronave.modelo+", "+ voos[i].data+", " + voos[i].hora;}
-	    		 String lugStr = (String) JOptionPane.showInputDialog(null, "Escolha um voo", "Escolher Voo", nVoo, null, lugVooStr, lugVooStr[0]);
+	    		 String lugStr = (String) JOptionPane.showInputDialog(null, "Escolha um voo", "Escolher Voo", 2, null, lugVooStr, lugVooStr[0]);
 	    		 Voo lugVoo = new Voo();
 	    		 for(int j = 0; j<nVoo; j++) {if((voos[j].aeronave.modelo+", "+ voos[j].data+", " + voos[j].hora).equals(lugStr)){
 	    			 lugVoo= voos[j];}}
