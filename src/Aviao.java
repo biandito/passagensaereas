@@ -18,7 +18,7 @@ public class Aviao extends Aeronave {
 	public void setAero(int nAero, Aviao[] aero) {
 		String aeroModel[] = new String[nAero];
 		 for(int i = 0; i<nAero; i++) {aeroModel[i]=aero[i].modelo;}
-		 String aeroVooModel = (String) JOptionPane.showInputDialog(null, "Qual aeronave?", "Escolher Aeronave", nAero, null, aeroModel, aeroModel[0]);
+		 String aeroVooModel = (String) JOptionPane.showInputDialog(null, "Qual aeronave?", "Escolher Aeronave", 2, null, aeroModel, aeroModel[0]);
 		 for(int j = 0; j<nAero; j++) {if(aeroVooModel==aero[j].modelo) {
 			 this.modelo = aero[j].modelo;
 			 this.Lugares= aero[j].Lugares;
